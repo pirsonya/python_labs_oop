@@ -27,3 +27,6 @@
 #### доступ к атрибуту класса
 ![alt text](<img/lab01/demo.py 1часть.png>)
 ![alt text](<img/lab01/demo.py 2 часть.png>)
+
+# вывод demo.py
+![alt text](img/lab01/вывод.png)
