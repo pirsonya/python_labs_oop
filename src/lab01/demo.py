@@ -58,7 +58,8 @@ def main():
     print(f"возраст автора4 в 2017 году: {author4.get_age_in_year(2000)}")
     print(f"текущий возраст атвора3: {author3.get_current_age()}")
     print(f"период жизни автора3: {author3.get_life_period()}")
-        
+    author1.count_books=-100
+    print(author1._count_books)   
 
 
 if __name__ == "__main__":
