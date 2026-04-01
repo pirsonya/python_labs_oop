@@ -69,17 +69,17 @@ class Author:
     
     @count_books.setter
     def count_books(self, new_count):
-        self._validate_count_books(new_count)
+        validate_count_books(new_count)
         self._count_books = new_count
     
     @country.setter
     def country(self, new_country):
-        self._validate_country(new_country)
+        validate_country(new_country)
         self._country = new_country
     
     @genre.setter
     def genre(self, new_genre):
-        self._validate_genre(new_genre)
+        validate_genre(new_genre)
         old_genre = self._genre
         self._genre = new_genre
         print(f"жанр  изменён с '{old_genre}' на '{self._genre}'")
@@ -125,7 +125,7 @@ class Author:
     def update_count_books(self, new_count):
         if not self._is_active:
             raise RuntimeError("автор неактивен")
-        self._validate_count_books(new_count)
+        validate_count_books(new_count)
         self._count_books = new_count
         return True
     def get_info(self):
@@ -161,7 +161,7 @@ class Author:
                 f"count_books={self._count_books})")
     
     def __eq__(self, other):
-        if not isinstance(other, Author):
+        if not isinstance(other, Author): 
             return False
         return (self.surname == other.surname and 
                 self.name == other.name and 
