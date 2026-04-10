@@ -1,11 +1,17 @@
-from datetime import datetime
-from validate import (
-    validate_name, 
-    validate_year, 
-    validate_country, 
-    validate_genre, 
-    validate_count_books
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+
+from lab01.validate import (
+    validate_count_books,
+    validate_country,
+    validate_genre,
+    validate_name,
+    validate_year
 )
+
 class Author:
     _genre_categories = ["роман", "поэзия", "ужасы", "комедия", "детектив", "драма"]
     def __init__(self, name, surname, birth_year=None, death_year=None, country="", genre="", count_books=0):
