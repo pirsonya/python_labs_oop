@@ -1,15 +1,18 @@
-from model import Author
+from lab02.model import Author
 
 class AuthorCollection:
     def __init__(self):
         self._items = []  
 
     def add(self, author):
+        # Исправлено: проверяем является ли author экземпляром Author или его наследником
         if not isinstance(author, Author):
-            raise TypeError(f"Можно добавлять только Author, получен {type(author).__name__}")
+            raise TypeError(f"Можно добавлять только Author или его наследников, получен {type(author).__name__}")
+
         for existing in self._items:
-            if existing == author:  
+            if existing == author:
                 raise ValueError(f"Автор {author.get_full_name()} ({author.birth_year}) уже существует")
+
         self._items.append(author)
 
     def remove(self, author):
