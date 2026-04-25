@@ -5,7 +5,6 @@ class AuthorCollection:
         self._items = []  
 
     def add(self, author):
-        # Исправлено: проверяем является ли author экземпляром Author или его наследником
         if not isinstance(author, Author):
             raise TypeError(f"Можно добавлять только Author или его наследников, получен {type(author).__name__}")
 

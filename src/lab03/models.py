@@ -32,7 +32,7 @@ class Translator(Author):
         return self._translated_books / self._count_books
 
     def get_info(self):
-        parent_info = super().get_info()
+        parent_info = super().get_info() 
         return (f"{parent_info}\n"
                 f"[Переводчик] Переводит с: {self._languages_from}, "
                 f"на: {self._languages_to}, переведено книг: {self._translated_books}")
