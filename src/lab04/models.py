@@ -21,7 +21,7 @@ class PrintableBiographer(Biographer, Printable):
 class ComparableAuthor(PrintableAuthor, Comparable):
     def compare_to(self, other) -> int:
         if not isinstance(other, Author):
-            raise TypeError("Can only compare with Author")
+            raise TypeError("объект должен быть типа Author")
         if self.birth_year < other.birth_year:
             return -1
         elif self.birth_year > other.birth_year:
@@ -31,7 +31,7 @@ class ComparableAuthor(PrintableAuthor, Comparable):
 class ComparableTranslator(PrintableTranslator, Comparable):
     def compare_to(self, other) -> int:
         if not isinstance(other, Author):
-            raise TypeError("Can only compare with Author")
+            raise TypeError("объект должен быть типа Author")
         if isinstance(other, Translator):
             if self._translated_books < other._translated_books:
                 return -1
@@ -46,7 +46,7 @@ class ComparableTranslator(PrintableTranslator, Comparable):
 class ComparableBiographer(PrintableBiographer, Comparable):
     def compare_to(self, other) -> int:
         if not isinstance(other, Author):
-            raise TypeError("Can only compare with Author")
+            raise TypeError("объект должен быть типа Author")
         if isinstance(other, Biographer):
             if self._biographies_count < other._biographies_count:
                 return -1
