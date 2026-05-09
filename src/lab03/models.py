@@ -45,6 +45,8 @@ class Translator(Author):
 
     def calculate(self):
         return self._translated_books
+    def display(self) -> str:
+        return f"Translator: {self.get_full_name()}, translated: {self._translated_books}"
 
 
 class Biographer(Author):
@@ -85,3 +87,5 @@ class Biographer(Author):
     def calculate(self):
         multiplier = 1.5 if self._has_interviews else 1.0
         return self._biographies_count * multiplier
+    def display(self) -> str:
+        return f"Biographer: {self.get_full_name()}, subjects: {self._subjects}"

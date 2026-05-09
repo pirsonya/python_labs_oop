@@ -8,7 +8,7 @@ from validate import (
 )
 class Author:
     _genre_categories = ["роман", "поэзия", "ужасы", "комедия", "детектив", "драма"]
-    def __init__(self, name, surname, birth_year=None, death_year=None, country="", genre="", count_books=0):
+    def __init__(self, name: str, surname: str, birth_year: int, death_year: int, country: str, genre: str, count_books=0) -> None:
         self._name=""
         self._surname=""
         self._birth_year=None
@@ -26,59 +26,59 @@ class Author:
         validate_genre(genre)
         validate_count_books(count_books)
 
-        self._name = name
-        self._surname = surname
-        self._birth_year = birth_year
-        self._death_year = death_year
-        self._country = country
-        self._genre = genre
-        self._count_books = count_books
+        self._name: str = name
+        self._surname: str = surname
+        self._birth_year: int = birth_year
+        self._death_year: int = death_year
+        self._country: str = country
+        self._genre: str = genre
+        self._count_books: int = count_books
 
     
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
     
     @property
-    def surname(self):
+    def surname(self) -> str:
         return self._surname
     
     @property
-    def birth_year(self):
+    def birth_year(self) -> int:
         return self._birth_year
     
     @property
-    def death_year(self):
+    def death_year(self) -> int:
         return self._death_year
     
     @property
-    def country(self):
+    def country(self) -> str:
         return self._country
     
     @property
-    def genre(self):
+    def genre(self) -> str:
         return self._genre
     
     @property
-    def count_books(self):
+    def count_books(self) -> int:
         return self._count_books
     
     @property
-    def is_active(self):
+    def is_active(self) -> bool:
         return self._is_active
     
     @count_books.setter
-    def count_books(self, new_count):
+    def count_books(self, new_count) -> int:
         validate_count_books(new_count)
         self._count_books = new_count
     
     @country.setter
-    def country(self, new_country):
+    def country(self, new_country) -> str:
         validate_country(new_country)
         self._country = new_country
     
     @genre.setter
-    def genre(self, new_genre):
+    def genre(self, new_genre) -> str:
         validate_genre(new_genre)
         old_genre = self._genre
         self._genre = new_genre
@@ -92,25 +92,25 @@ class Author:
         self._is_active = False
         return self._is_active
 
-    def get_full_name(self):
+    def get_full_name(self) -> str:
         return f'{self._name} {self._surname}'
-    def get_initials(self):
+    def get_initials(self) -> str:
         return f'{self._surname} {self._name[0]}'
     def is_alive(self):
         return self._death_year is None
-    def get_age_in_year(self, year):
+    def get_age_in_year(self, year) -> int:
         if year<self._birth_year:
             return 0
         elif self._death_year and year>self._birth_year:
             return self._death_year-self._birth_year
         else:
             return year-self._birth_year
-    def get_current_age(self, current=2026):
+    def get_current_age(self, current=2026) -> int:
         if self.is_alive:
             return current-self._birth_year
         else:
             return 0
-    def get_life_period(self):
+    def get_life_period(self) -> int:
         if self._death_year:
             return f'{self._birth_year}-{self._death_year}'
         else:
@@ -146,6 +146,12 @@ class Author:
             cls._genre_categories.append(new_genre.lower())
         return cls._genre_categories
     
+    def display(self) -> str:
+        return f"Author: {self.get_full_name()}, books: {self.count_books}"
+    
+    def score(self) -> float:
+        return min(self.count_books / 10, 10.0)
+
     def __str__(self):
         life_status = f"({self._birth_year}"
         life_status += f"-{self._death_year}" if self._death_year else "-настоящее ыремя"
