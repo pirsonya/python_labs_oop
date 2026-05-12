@@ -1,4 +1,4 @@
-from typing import TypeVar, Generic, Optional, Callable, List, Protocol, Union, overload
+from typing import TypeVar, Generic, Optional, Callable, List, Protocol, Union
 
 class Displayable(Protocol):
     def display(self) -> str: ...
@@ -55,12 +55,6 @@ class TypedCollection(Generic[T]):
 
     def __iter__(self):
         return iter(self._items)
-
-    @overload
-    def __getitem__(self, index: int) -> T: ...
-
-    @overload
-    def __getitem__(self, index: slice) -> 'TypedCollection[T]': ...
 
     def __getitem__(self, index: Union[int, slice]) -> Union[T, 'TypedCollection[T]']:
         if isinstance(index, slice):
